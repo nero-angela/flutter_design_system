@@ -1,3 +1,7 @@
+## 1.0.2
+
+* Add IgnorePointer to badge.
+
 ## 1.0.1
 
 * Delete google_fonts dependency.
