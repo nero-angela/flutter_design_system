@@ -1,9 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:fluttertoast/fluttertoast.dart';
 import 'package:provider/provider.dart';
 
 import '../src/core/app_theme.dart';
-import 'component/base_toast.dart';
 import 'default_theme/default_dark_theme.dart';
 import 'default_theme/default_light_theme.dart';
 import 'responsive/responsive.dart';
@@ -70,23 +68,4 @@ extension BuildContextThemeNanagerExt on BuildContext {
   AppColor get color => theme.color;
   AppDeco get deco => theme.deco;
   AppFont get font => theme.font;
-
-  /// Toast
-  void toast(String msg) {
-    FToast()
-      ..init(this)
-      ..showToast(
-        toastDuration: const Duration(seconds: 2),
-        child: BaseToast(msg: msg),
-        positionedToastBuilder: (context, child) {
-          Size deviceSize = MediaQuery.of(context).size;
-          return Positioned(
-            bottom: deviceSize.height * 0.2,
-            left: 0,
-            right: 0,
-            child: child,
-          );
-        },
-      );
-  }
 }

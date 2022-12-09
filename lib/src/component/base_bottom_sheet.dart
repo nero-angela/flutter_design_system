@@ -7,19 +7,19 @@ class BaseBottomSheet extends StatelessWidget {
     super.key,
     required this.child,
     this.padding,
-    this.isBorderAll,
+    this.isRoundAll,
   });
 
   final Widget child;
   final EdgeInsets? padding;
-  final bool? isBorderAll;
+  final bool? isRoundAll;
 
   @override
   Widget build(BuildContext context) {
     return Container(
       decoration: BoxDecoration(
         color: context.color.surface,
-        borderRadius: (isBorderAll ?? false)
+        borderRadius: (isRoundAll ?? false)
             ? BorderRadius.circular(24)
             : const BorderRadius.only(
                 topLeft: Radius.circular(24),

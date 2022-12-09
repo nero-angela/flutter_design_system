@@ -1,3 +1,13 @@
+## 1.0.4
+
+* Remove fluttertoast package.
+* Update README.
+
+## 1.0.3
+
+* Rename BaseBottomSheet isBorderAll to isRoundAll.
+* Change Button Container to AnimatedContainer.
+
 ## 1.0.2
 
 * Add IgnorePointer to badge.
