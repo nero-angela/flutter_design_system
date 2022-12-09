@@ -1,6 +1,6 @@
 name: flutter_design_system
 description: Flutter design system & responsive tutorial package.
-version: 1.0.2
+version: 1.0.4
 homepage: https://github.com/nero-angela/flutter_design_system
 repository: https://github.com/nero-angela/flutter_design_system
 
@@ -12,7 +12,6 @@ dependencies:
   flutter:
     sdk: flutter
   flutter_svg: ^1.1.6
-  fluttertoast: ^8.1.1
   provider: ^6.0.4
 
 dev_dependencies:

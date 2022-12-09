@@ -120,7 +120,8 @@ class _ButtonState extends State<Button> {
       },
       onTapDown: (details) => onPressed(true),
       onTapCancel: () => onPressed(true),
-      child: Container(
+      child: AnimatedContainer(
+        duration: const Duration(milliseconds: 100),
         width: widget.width,
         decoration: BoxDecoration(
           color: backgroundColor,

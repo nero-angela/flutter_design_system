@@ -75,4 +75,4 @@ void main() {
 ```
 
 ## Demo
-[Flutter design system tutorial](https://github.com/nero-angela/flutter_design_system_tutorial/tree/package)
+[Tomorrow's House](https://github.com/nero-angela/flutter_house_of_tomorrow/tree/flutter_design_system)

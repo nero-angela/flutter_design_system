@@ -96,9 +96,6 @@ class _SamplePageState extends State<SamplePage> {
                 runSpacing: 16,
                 spacing: 16,
                 children: [
-                  /// Toast
-                  buildToast(context),
-
                   /// Dialog
                   buildDialog(context),
 
@@ -178,15 +175,6 @@ class _SamplePageState extends State<SamplePage> {
             );
           },
         );
-      },
-    );
-  }
-
-  Button buildToast(BuildContext context) {
-    return Button(
-      text: 'Show toast',
-      onPressed: () {
-        context.toast('Hello I\'m toast');
       },
     );
   }
