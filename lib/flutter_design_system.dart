@@ -2,7 +2,7 @@ library flutter_design_system;
 
 /// Component
 export './src/component/asset_icon.dart';
-export './src/component/badge.dart';
+export 'src/component/round_badge.dart';
 export './src/component/base_bottom_sheet.dart';
 export './src/component/base_dialog.dart';
 export './src/component/button.dart';

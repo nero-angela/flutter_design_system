@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 
 import '../theme_service.dart';
 
-class Badge extends StatelessWidget {
-  const Badge({
+class RoundBadge extends StatelessWidget {
+  const RoundBadge({
     super.key,
     required this.child,
     required this.label,

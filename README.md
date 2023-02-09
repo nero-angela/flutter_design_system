@@ -28,7 +28,6 @@ void main() {
 |<img width="1148" alt="Light theme components image" src="https://user-images.githubusercontent.com/26322627/203027906-40934207-e4cd-4188-85db-18c76fd80324.png">|<img width="1143" alt="Dark theme components image" src="https://user-images.githubusercontent.com/26322627/203027911-63d24ccc-ac6b-4030-aca1-9ee22c027c6d.png">|
 
 - AssetIcon
-- Badge
 - BaseBottomSheet
 - BaseDialog
 - BaseToast
@@ -38,6 +37,7 @@ void main() {
 - HideKeyboard
 - InputField
 - Rating
+- RoundBadge
 - Tile
 
 ### Responsive UI

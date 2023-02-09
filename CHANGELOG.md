@@ -1,3 +1,7 @@
+## 1.0.5
+
+* Rename Badge to RoundBadge.
+
 ## 1.0.4
 
 * Remove fluttertoast package.
