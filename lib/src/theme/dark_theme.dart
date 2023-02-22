@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_design_system/flutter_design_system.dart';
 
-class MyDarkTheme implements AppTheme {
+import 'foundation/app_theme.dart';
+import 'res/palette.dart';
+import 'res/typo.dart';
+
+class DarkTheme implements AppTheme {
   @override
   Brightness brightness = Brightness.dark;
 

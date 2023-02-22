@@ -1,3 +1,9 @@
+## 1.1.0
+
+* Rename icons.
+* Rename RoundBadge to CounterBadge.
+* Add Toast.
+
 ## 1.0.5
 
 * Rename Badge to RoundBadge.

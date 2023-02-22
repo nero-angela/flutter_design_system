@@ -8,24 +8,28 @@ void main() {
   runApp(
     ThemeInjector(
       themeService: ThemeService(
-        brightness: Brightness.dark, // Current theme
+        brightness: Brightness.light, // Current theme
         lightTheme: MyLightTheme(), // My light theme
         darkTheme: MyDarkTheme(), // My dark theme
       ),
-      child: const MyApp(),
+      child: MyApp(),
     ),
   );
 }
 
 class MyApp extends StatelessWidget {
-  const MyApp({super.key});
+  MyApp({super.key});
+
+  final GlobalKey<NavigatorState> navigatorKey = GlobalKey();
 
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Flutter Design System',
-      theme: context.themeManager.themeData,
+      navigatorKey: navigatorKey,
+      theme: context.themeService.themeData,
       debugShowCheckedModeBanner: false,
+      builder: (context, child) => Toast.init(navigatorKey, child),
       home: const SamplePage(),
     );
   }
@@ -42,6 +46,7 @@ class _SamplePageState extends State<SamplePage> {
   int count = 1;
   int colorIndex = 0;
   bool get isLightTheme => context.theme.brightness == Brightness.light;
+  final TextEditingController textController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -55,9 +60,9 @@ class _SamplePageState extends State<SamplePage> {
             type: ButtonType.flat,
             color:
                 isLightTheme ? context.color.secondary : context.color.tertiary,
-            icon: isLightTheme ? 'sunny-outline.svg' : 'moon-outline.svg',
+            icon: isLightTheme ? 'sunny' : 'moon',
             onPressed: () {
-              context.rThemeManager.toggleTheme();
+              context.readThemeService.toggleTheme();
             },
           ),
         ],
@@ -96,6 +101,16 @@ class _SamplePageState extends State<SamplePage> {
                 runSpacing: 16,
                 spacing: 16,
                 children: [
+                  /// Toast
+                  Button(
+                    text: 'Show toast',
+                    onPressed: () => Toast.show(
+                      textController.text.isEmpty
+                          ? DateTime.now().toString()
+                          : textController.text,
+                    ),
+                  ),
+
                   /// Dialog
                   buildDialog(context),
 
@@ -130,7 +145,7 @@ class _SamplePageState extends State<SamplePage> {
                   children: [
                     Text(
                       "Hello Bottom Sheet",
-                      style: context.font.headline3,
+                      style: context.typo.headline3,
                     ),
                     const SizedBox(height: 32),
                   ],
@@ -154,19 +169,20 @@ class _SamplePageState extends State<SamplePage> {
               title: 'Dialog title',
               content: Text(
                 'Dialog content',
-                style: context.font.headline6,
+                style: context.typo.headline6,
               ),
               actions: [
                 Button(
                   text: 'Cancel',
-                  color: context.color.onSecondary,
-                  backgroundColor: context.color.secondary,
+                  type: ButtonType.flat,
+                  color: context.color.secondary,
                   onPressed: () {
                     Navigator.pop(context);
                   },
                 ),
                 Button(
                   text: 'Confirm',
+                  type: ButtonType.flat,
                   onPressed: () {
                     Navigator.pop(context);
                   },
@@ -181,9 +197,10 @@ class _SamplePageState extends State<SamplePage> {
 
   Rating buildRating() => const Rating(rating: '5.0');
 
-  Widget buildInputField() => const SizedBox(
+  Widget buildInputField() => SizedBox(
         width: 500,
         child: InputField(
+          controller: textController,
           hint: 'InputField',
         ),
       );
@@ -192,7 +209,7 @@ class _SamplePageState extends State<SamplePage> {
     return SizedBox(
       width: 500,
       child: Tile(
-        icon: 'moon-outline.svg',
+        icon: 'moon',
         title: 'title',
         subtitle: 'subtitle',
         onPressed: () {},
@@ -209,7 +226,7 @@ class _SamplePageState extends State<SamplePage> {
         Colors.purple,
         Colors.blue,
       ],
-      onSelected: (index) {
+      onColorSelected: (index) {
         setState(() {
           colorIndex = index;
         });
@@ -301,20 +318,20 @@ Widget buildAssetIcon(BuildContext context) {
     spacing: 24,
     runSpacing: 16,
     children: [
-      'arrow-back-outline.svg',
-      'basket-outline.svg',
-      'checkmark-outline.svg',
-      'chevron-forward-outline.svg',
-      'close-outline.svg',
-      'language-outline.svg',
-      'minus-outline.svg',
-      'moon-outline.svg',
-      'option-outline.svg',
-      'plus-outline.svg',
-      'search-outline.svg',
-      'star-fill.svg',
-      'sunny-outline.svg',
-      'uncheckmark-outline.svg',
+      'arrow-left',
+      'basket',
+      'check',
+      'chevron-right',
+      'close',
+      'language',
+      'minus',
+      'moon',
+      'option',
+      'plus',
+      'search',
+      'star',
+      'sunny',
+      'uncheck',
     ]
         .map((e) => Column(
               mainAxisSize: MainAxisSize.min,
@@ -323,7 +340,7 @@ Widget buildAssetIcon(BuildContext context) {
                 const SizedBox(height: 8),
                 Text(
                   e,
-                  style: context.font.body2,
+                  style: context.typo.body2,
                 ),
               ],
             ))

@@ -1,6 +1,6 @@
 name: flutter_design_system
 description: Flutter design system & responsive tutorial package.
-version: 1.0.5
+version: 1.1.0
 homepage: https://github.com/nero-angela/flutter_design_system
 repository: https://github.com/nero-angela/flutter_design_system
 
@@ -11,7 +11,7 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-  flutter_svg: ^1.1.6
+  flutter_svg: ^2.0.2
   provider: ^6.0.4
 
 dev_dependencies:
@@ -23,11 +23,12 @@ flutter:
   fonts:
     - family: noto_sans
       fonts:
-        - asset: asset/font/noto_sans/NotoSans-Light.ttf
+        - asset: assets/fonts/NotoSans-Light.ttf
           weight: 300
-        - asset: asset/font/noto_sans/NotoSans-Regular.ttf
+        - asset: assets/fonts/NotoSans-Regular.ttf
           weight: 400
-        - asset: asset/font/noto_sans/NotoSans-SemiBold.ttf
+        - asset: assets/fonts/NotoSans-SemiBold.ttf
           weight: 600
+
   assets:
-    - asset/icon/
+    - assets/icons/

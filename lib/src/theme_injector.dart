@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-import '../flutter_design_system.dart';
+import 'theme_service.dart';
 
 class ThemeInjector extends StatelessWidget {
   const ThemeInjector({

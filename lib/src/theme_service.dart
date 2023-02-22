@@ -1,36 +1,36 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-import '../src/core/app_theme.dart';
-import 'default_theme/default_dark_theme.dart';
-import 'default_theme/default_light_theme.dart';
-import 'responsive/responsive.dart';
+import 'theme/dark_theme.dart';
+import 'theme/foundation/app_theme.dart';
+import 'theme/light_theme.dart';
+import 'theme/res/layout.dart';
 
 class ThemeService with ChangeNotifier {
   ThemeService({
     Brightness? brightness,
+    AppTheme? theme,
     AppTheme? lightTheme,
     AppTheme? darkTheme,
   })  : brightness = brightness ?? Brightness.light,
-        lightTheme = lightTheme ?? DefaultLightTheme(),
-        darkTheme = darkTheme ?? DefaultDarkTheme();
+        lightTheme = lightTheme ?? LightTheme(),
+        darkTheme = darkTheme ?? DarkTheme();
 
-  AppTheme get theme => brightness == Brightness.light ? lightTheme : darkTheme;
+  /// Current Theme
   Brightness brightness;
+  AppTheme get theme => brightness == Brightness.light ? lightTheme : darkTheme;
   AppTheme lightTheme;
   AppTheme darkTheme;
 
   /// Change Theme
   void toggleTheme() {
-    if (theme.brightness == Brightness.light) {
-      brightness = Brightness.dark;
-    } else {
-      brightness = Brightness.light;
-    }
+    brightness = theme.brightness == Brightness.light
+        ? Brightness.dark
+        : Brightness.light;
     notifyListeners();
   }
 
-  /// Material ThemeData
+  /// Material ThemeData Customize
   ThemeData get themeData {
     return ThemeData(
       /// Scaffold
@@ -39,13 +39,12 @@ class ThemeService with ChangeNotifier {
       /// AppBar
       appBarTheme: AppBarTheme(
         backgroundColor: theme.color.surface,
-        titleSpacing: 0,
         elevation: 0,
         centerTitle: false,
         iconTheme: IconThemeData(
           color: theme.color.text,
         ),
-        titleTextStyle: theme.font.headline2.copyWith(
+        titleTextStyle: theme.typo.headline2.copyWith(
           color: theme.color.text,
         ),
       ),
@@ -54,18 +53,18 @@ class ThemeService with ChangeNotifier {
       bottomSheetTheme: const BottomSheetThemeData(
         backgroundColor: Colors.transparent,
         constraints: BoxConstraints(
-          maxWidth: ResponsiveConfig.bottomSheetMaxWidth,
+          maxWidth: Breakpoints.bottomSheet,
         ),
       ),
     );
   }
 }
 
-extension BuildContextThemeNanagerExt on BuildContext {
-  ThemeService get rThemeManager => read<ThemeService>();
-  ThemeService get themeManager => watch<ThemeService>();
-  AppTheme get theme => themeManager.theme;
+extension ThemeServiceExt on BuildContext {
+  ThemeService get readThemeService => read<ThemeService>();
+  ThemeService get themeService => watch<ThemeService>();
+  AppTheme get theme => themeService.theme;
   AppColor get color => theme.color;
   AppDeco get deco => theme.deco;
-  AppFont get font => theme.font;
+  AppTypo get typo => theme.typo;
 }
