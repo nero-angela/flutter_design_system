@@ -41,11 +41,6 @@ Widget build(BuildContext context) {
 
 ## Feature
 ### Custom Theme
-|Light Theme|Dark Theme|
-|:-:|:-:|
-|<video src="https://user-images.githubusercontent.com/26322627/220570237-39cf416b-89eb-416e-87ac-bfe6a680cb98.mov" width="300px">|<video src="https://user-images.githubusercontent.com/26322627/220570332-7cfa1801-d517-43db-ba4f-62ee7b36f5ef.mov" width="300px">|
-
-
 You can also create custom light and dark theme by implements `AppTheme`.
 ```dart
 class MyLightTheme implements AppTheme {}
@@ -83,4 +78,3 @@ SizedBox(
     ),
 );
 ```
-<video src="https://user-images.githubusercontent.com/26322627/220571723-84f925f9-1a10-424e-903b-18a03a74c289.mov">
